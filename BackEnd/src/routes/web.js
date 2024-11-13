@@ -6,11 +6,14 @@ const {
   postCreateUser,
   putUpdateUser,
   deleteUser,
+  getUsersById,
 } = require("../controllers/homeController");
 
 router.get("/", getHomePage);
 
 router.get("/users", getUserPage);
+
+router.get("/users/:id", getUsersById);
 
 router.post("/create-user", postCreateUser);
 

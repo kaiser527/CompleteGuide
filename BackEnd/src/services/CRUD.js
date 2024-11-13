@@ -5,6 +5,14 @@ const getAllUsers = async () => {
   return results;
 };
 
+const getOneUserById = async (userId) => {
+  let [results, fields] = await connection.query(
+    "select * from Users where id = ?",
+    [userId]
+  );
+  return results;
+};
+
 const createNewUser = async (email, name, city) => {
   const [results, fields] = await connection.query(
     `insert into Users(email, name, city)
@@ -34,4 +42,10 @@ const deleteUserById = async (userId) => {
   );
 };
 
-module.exports = { getAllUsers, createNewUser, deleteUserById, updateUserById };
+module.exports = {
+  getAllUsers,
+  createNewUser,
+  deleteUserById,
+  updateUserById,
+  getOneUserById,
+};

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 21,
+    "email": "instant@gmail.com",
+    "name": "instantname",
+    "city": "instantcity"
+  },
+  {
+    "id": 22,
+    "email": "test@gmail.com",
+    "name": "testName",
+    "city": "testCity"
+  },
+  {
+    "id": 24,
+    "email": "abc123@gmail.com",
+    "name": "finaltest",
+    "city": "randomcity"
+  },
+  {
+    "id": 25,
+    "email": "eric@gmail.com",
+    "name": "hoidanit",
+    "city": "hanoi"
+  },
+  {
+    "id": 31,
+    "email": "hutao@gmail.com",
+    "name": "Hu Tao",
+    "city": "Liyue"
+  },
+  {
+    "id": 32,
+    "email": "testupdate@gmail.com",
+    "name": "testshowhide",
+    "city": "testupdate"
+  },
+  {
+    "id": 38,
+    "email": "postman@gmail.com",
+    "name": "PostmanName",
+    "city": "PostmanCity"
+  },
+  {
+    "id": 44,
+    "email": "testapi@gmail.com",
+    "name": "testApi",
+    "city": "city"
+  }
+]
