@@ -31,15 +31,14 @@ const ModalCreateUser = (props) => {
     }
     if (!name) {
       alert("Missing name !");
-      return;
     }
-
-    //submit data
-    const data = await postCreateNewUser(email, name, city);
-    await fetchListUsers();
-    handleResetInput("");
-    console.log(data.data);
-    setShow(!show);
+    const res = await postCreateNewUser(email, name, city);
+    if (res && res.data.errCode === 0) {
+      await fetchListUsers();
+      handleResetInput("");
+      alert(res.data.message);
+      setShow(!show);
+    }
   };
 
   return (

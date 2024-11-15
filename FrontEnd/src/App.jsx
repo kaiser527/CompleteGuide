@@ -2,7 +2,7 @@ import ListUsers from "./Components/ListUsers";
 import ModalCreateUser from "./Components/ModalCreateUser";
 import "./style/App.scss";
 import { useEffect, useState } from "react";
-import { getAllUser, deleteUser } from "./services/apiServices";
+import { getAllUsers } from "./services/apiServices";
 import ModalUpdateUser from "./Components/ModalUpdateUser";
 import ModalDeleteUser from "./Components/ModalDeleteUser";
 
@@ -19,7 +19,7 @@ const App = () => {
   }, []);
 
   const fetchListUsers = async () => {
-    const res = await getAllUser();
+    const res = await getAllUsers();
     setData(res.data);
     console.log(res.data);
   };
@@ -34,11 +34,6 @@ const App = () => {
     setShowModalDeleteUser(true);
   };
 
-  const handleSubmitDeleteUser = async () => {
-    await deleteUser(dataDelete.id);
-    await fetchListUsers();
-    setShowModalDeleteUser(!showModalDeleteUser);
-  };
   return (
     <>
       <div>
@@ -57,35 +52,30 @@ const App = () => {
             />
           )}
         </div>
-        {showModalUpdateUser ? (
+        {showModalUpdateUser && (
           <div className="center">
             <ModalUpdateUser
               dataUpdate={dataUpdate}
               fetchListUsers={fetchListUsers}
-              show={showModalUpdateUser}
               setShow={setShowModalUpdateUser}
             />
           </div>
-        ) : (
-          <></>
         )}
-        {showModalDeleteUser ? (
+        {showModalDeleteUser && (
           <div className="center">
-            <ModalDeleteUser dataDelete={dataDelete} />
-            <div className="overwrite">
-              <button onClick={() => handleSubmitDeleteUser()}>
-                confirm delete
-              </button>
+            <ModalDeleteUser
+              dataDelete={dataDelete}
+              setShow={setShowModalDeleteUser}
+              fetchListUsers={fetchListUsers}
+            />
+            <div>
               <button
                 onClick={() => setShowModalDeleteUser(!showModalDeleteUser)}
-                style={{ marginLeft: "15px" }}
               >
                 Cancel
               </button>
             </div>
           </div>
-        ) : (
-          <></>
         )}
       </div>
       <br />

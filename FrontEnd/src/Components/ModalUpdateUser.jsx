@@ -3,7 +3,7 @@ import { putUpdateUser } from "../services/apiServices";
 import _ from "lodash";
 
 const ModalUpdateUser = (props) => {
-  const { fetchListUsers, dataUpdate, show, setShow } = props;
+  const { fetchListUsers, dataUpdate, setShow } = props;
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -40,10 +40,13 @@ const ModalUpdateUser = (props) => {
     }
 
     //submit data
-    await putUpdateUser(dataUpdate.id, email, name, city);
-    await fetchListUsers();
-    handleResetInput();
-    setShow(!show);
+    const res = await putUpdateUser(dataUpdate.id, email, name, city);
+    if (res && res.data.errCode === 0) {
+      await fetchListUsers();
+      handleResetInput();
+      alert(res.data.message);
+      setShow(false);
+    }
   };
 
   return (
@@ -76,7 +79,7 @@ const ModalUpdateUser = (props) => {
       <br />
       <div>
         <button onClick={() => handleOnSubmitUsers()}>Submit</button>
-        <button onClick={() => setShow(!show)} style={{ marginLeft: "15px" }}>
+        <button onClick={() => setShow(false)} style={{ marginLeft: "15px" }}>
           Cancel
         </button>
       </div>

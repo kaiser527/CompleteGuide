@@ -19,7 +19,7 @@ const putUpdateUser = (id, email, name, city) => {
   return axios.put(`http://localhost:3003/update-user/${id}`, data);
 };
 
-const getAllUser = () => {
+const getAllUsers = () => {
   return axios.get("http://localhost:3003/users");
 };
 
@@ -27,4 +27,4 @@ const deleteUser = (userid) => {
   return axios.delete(`http://localhost:3003/delete-user/${userid}`);
 };
 
-export { getAllUser, postCreateNewUser, putUpdateUser, deleteUser };
+export { getAllUsers, postCreateNewUser, putUpdateUser, deleteUser };
