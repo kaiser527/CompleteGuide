@@ -3,7 +3,6 @@ const {
   createNewUser,
   updateUserById,
   deleteUserById,
-  getOneUserById,
 } = require("../services/CRUD");
 
 const getHomePage = (req, res) => {
@@ -12,12 +11,6 @@ const getHomePage = (req, res) => {
 
 const getUserPage = async (req, res) => {
   let results = await getAllUsers();
-  return res.status(200).json(results);
-};
-
-const getUsersById = async (req, res) => {
-  let userId = req.params.id;
-  let results = await getOneUserById(userId);
   return res.status(200).json(results);
 };
 
@@ -69,5 +62,4 @@ module.exports = {
   postCreateUser,
   putUpdateUser,
   deleteUser,
-  getUsersById,
 };
